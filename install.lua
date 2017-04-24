@@ -1,6 +1,5 @@
 local component = require("component");
 local fs = require("filesystem");
-local serialization = require("serialization");
 local term = require("term");
 local internet = nil;
 
@@ -13,6 +12,7 @@ function fetchPackage(pack)
 	local url = repositoryURL .. pack .. ".lua";
 
 	local request = internet.request(url);
+  print(request)
 	if request == nil then
 		return nil;
 	end
@@ -23,7 +23,7 @@ function fetchPackage(pack)
 		data = data .. chunk;
 	end
 
-	return serialization.unserialize(data);
+	--return serialization.unserialize(data);
 end
 
 
