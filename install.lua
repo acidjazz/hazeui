@@ -36,7 +36,7 @@ function installPackage(package_data)
 
 		if filePath ~= nil then
 			local pathSegments = fs.segments(filePath);
-			local pathChecked = "/";
+			local pathChecked = "/lib/";
 			for _, segment in pairs(pathSegments) do
 				pathChecked = fs.concat(pathChecked, segment);
 				if not fs.exists(pathChecked) then
