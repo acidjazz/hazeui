@@ -3,7 +3,7 @@ local fs = require("filesystem");
 local term = require("term");
 local internet = nil;
 
-local packages = {"haze"}
+local packages = {"hazeui"}
 local repositoryURL = "https://raw.githubusercontent.com/acidjazz/hazeui/master/lib/"
 
 local gpu = component.gpu;
