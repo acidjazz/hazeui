@@ -109,6 +109,7 @@ for i, p in pairs(packages) do
 	term.write(pName .. " |" .. string.rep("=", barRep) .. ">" .. string.rep(" ", barWidthMax - barRep) .. "|" .. string.format("%6.2f%%", percent * 100), false);
 	local packageData = fetchPackage(p);
 	if packageData == nil then
+    print(packageData)
 		print("");
 		print("Failed to download " .. p);
 		return;
