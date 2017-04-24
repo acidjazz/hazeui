@@ -4,6 +4,7 @@ local term = require("term");
 local internet = nil;
 
 local packages = {"hazeui"}
+--local repositoryURL = "http://50.0.80.248:1337/lib/"
 local repositoryURL = "https://raw.githubusercontent.com/acidjazz/hazeui/master/lib/"
 
 local gpu = component.gpu;
