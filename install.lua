@@ -40,6 +40,7 @@ function installPackage(file, contents)
 		file:close();
 
 	return true;
+end
 
 print("The following packages are scheduled for deployment:");
 local packageNameMaxLen = 0;
