@@ -1,2 +1,3 @@
 a GUI library for opencomputers 
-| Still in early development
+
+> *status* Currently in early development
