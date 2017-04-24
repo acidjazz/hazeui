@@ -1,3 +1,3 @@
-a GUI library for opencomputers 
+A GUI library for opencomputers 
 
-> *status* Currently in early development
+> *status*: currently in early development
