@@ -30,7 +30,7 @@ end
 
 function installPackage(file, contents)
 
-		local file = io.open("/lib/" .. file, "wb");
+		local file = io.open("/lib/" .. file .. ".lua", "wb");
 
 		if file == nil then
 			return false;
