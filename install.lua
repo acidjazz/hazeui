@@ -24,59 +24,22 @@ function fetchPackage(pack)
 	end
 
 	--return serialization.unserialize(data);
+  return data;
 end
 
 
-function installPackage(package_data)
-	for fileName, fileContents in pairs(package_data.files) do
-		local filePath = fs.path(fileName);
-		if fs.exists(fileName) then
-			fs.remove(fileName);
-		end
+function installPackage(file, contents)
 
-		if filePath ~= nil then
-			local pathSegments = fs.segments(filePath);
-			local pathChecked = "/lib/";
-			for _, segment in pairs(pathSegments) do
-				pathChecked = fs.concat(pathChecked, segment);
-				if not fs.exists(pathChecked) then
-					fs.makeDirectory(pathChecked);
-				end
-			end
-		end
+		local file = io.open("/lib/" .. file, "wb");
 
-		local file = io.open(fileName, "wb");
 		if file == nil then
 			return false;
 		end
-		file:write(fileContents);
+
+		file:write(contents);
 		file:close();
-	end
-
-	for linkName, linkTarget in pairs(package_data.links) do
-		local filePath = fs.path(fileName);
-		if fs.exists(fileName) then
-			fs.remove(fileName);
-		end
-
-		if filePath ~= nil then
-			local pathSegments = fs.segments(filePath);
-			local pathChecked = "/";
-			for _, segment in pairs(pathSegments) do
-				pathChecked = fs.concat(pathChecked, segment);
-				if not fs.exists(pathChecked) then
-					fs.makeDirectory(pathChecked);
-				end
-			end
-		end
-
-		if not fs.link(linkTarget, linkname) then
-			return false;
-		end
-	end
 
 	return true;
-end
 
 print("The following packages are scheduled for deployment:");
 local packageNameMaxLen = 0;
@@ -120,7 +83,7 @@ for i, p in pairs(packages) do
 	barRep = math.floor(barWidthMax * percent + 0.5);
 	term.write(pName .. " |" .. string.rep("=", barRep) .. ">" .. string.rep(" ", barWidthMax - barRep) .. "|" .. string.format("%6.2f%%", percent * 100), false);
 
-	if not installPackage(packageData) then
+	if not installPackage(p, packageData) then
 		print("");
 		print("Failed to install " .. p);
 	end
